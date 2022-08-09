@@ -32,7 +32,7 @@ With this Project you can create a Book Store where you cann add Books with auth
 
 - Github: [@Solobarine](https://github.com/ Solobarine)
 - Twitter: [@SolomonAkpuru](https://twitter .com/SolomonAkpuru)
-- LinkedIn: [Solomon Akpuru](https://www.linkedin.com/mwlite/in/solomon-akpuru-17069b
+- LinkedIn: [Solomon Akpuru](https://www.linkedin.com/mwlite/in/solomon-akpuru-17069b)
 
 
 ## 🤝 Contributing
