@@ -1,13 +1,3 @@
-"name": "awesome-books",
-	"version": "1.0.0",
-	"description": "This is a book shelve website dedicated to store collection of books, add new books and delete books.",
-	"private": true,
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"watch": "webpack --watch",
-		"start": "webpack serve --open",
-		"build": "webpack"
-	},
 {
   "devDependencies": {
     "babel-eslint": "^10.1.0",
