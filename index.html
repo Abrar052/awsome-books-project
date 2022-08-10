@@ -10,33 +10,19 @@
 </head>
 
 <body>
-	<header></header>
-	<section id="books">
-		<h1>AWESOME BOOKS</h1>
-		<div class="list-books">
-		</div>
-	</section>
-
-	<section id="add-book">
-		<h2>Add book Form</h2>
-		<form id="book-form">
-			<div>
-				<label for="title">Book Title</label>
-				<input id="title" type="text" name="title" placeholder="Title" maxlength="30" required />
-
+		<section id="book-list">
+			<h2 class="page-title">All Awesome Books</h2>
+			<div class="library">
 			</div>
-			<div>
-				<label for="author">book author</label>
-				<input id="author" type="text" name="author" placeholder="Author" maxlength="30" required />
-
-			</div>
-				<div>
-					<button id="add-book-btn" type="submit">Add book</button>
-				</div>
-				
-		</form>
-	</section>
-
+		</section>
+		<section class="add-books">
+			<h2 class="page-title">Add a New Book</h2>
+			<form id="form">
+				<input class="name" type="text" aria-placeholder="Enter Book Name">
+				<input class="author" type="text" aria-placeholder="Enter Book Author">
+				<button class="submit" type="submit">Add Book</button>
+			</form> 
+		</section>
   <footer>
 	</footer>
 

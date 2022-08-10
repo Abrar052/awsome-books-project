@@ -1,137 +1,63 @@
-let library = {
-  nextId: 0, // return to 0;
-  books: [],
-  add: (title, author) => {
-    const newBook = {
-      id: library.nextId,
-      title,
-      author,
-    };
+/* eslint-disable max-classes-per-file */
 
-    library.books.push(newBook);
+// Select Elements
+const library = document.querySelector('.library');
+const bookName = document.querySelector('.name');
+const bookAuthor = document.querySelector('.author');
+document.body.style.backgroundColor = 'red';
 
-    library.nextId += 1;
-    return newBook;
-  },
-  remove: (id) => {
-    library.books = library.books.filter((book) => book.id !== id);
-  },
-};
+// Create Empty Array
+const books= [];
 
-// Book local storage
-
-/* Check for storage Availability copy form documentation */
-function storageAvailable(type) {
-  let storage;
-  try {
-    storage = window[type];
-    const x = '__storage_test__';
-    storage.setItem(x, x);
-    storage.removeItem(x);
-    return true;
-  } catch (e) {
-    return e instanceof DOMException && (
-    // everything except Firefox
-      e.code === 22
-        // Firefox
-        || e.code === 1014
-        // test name field too, because code might not be present
-        // everything except Firefox
-        || e.name === 'QuotaExceededError'
-        // Firefox
-        || e.name === 'NS_ERROR_DOM_QUOTA_REACHED')
-        // acknowledge QuotaExceededError only if there's something already stored
-        && (storage && storage.length !== 0);
+class Book {
+  constructor(name, author) {
+    this.name = name;
+    this.author = author;
+  }
+  
+  // Method to load added Books
+  static loadBooks(i) {
+    library.innerHTML += `<div class="each-book">
+    <div class="book-name">${books[i].name}</div>
+    <div class="book-author">${books[i].author}</div>
+    <button class="button" onclick="Book.removeBook(${i})">Remove</button>
+    </div>`;
+  }
+  
+    // Method to Remove Books
+    static removeBook(i) {
+      books.splice(i, 1);
+      localStorage.setItem('books', JSON.stringify(books));
+      Book.refreshBook();
+    }
+  
+  static refreshBook() {
+    library.innerHTML = '';
+    for (let i = 0;i < books.length;i++) {
+      library.innerHTML += `<div class="each-book">
+    <div class="book-name">${books[i].name}</div>
+    <div class="book-author">${books[i].author}</div>
+    <button class="button" onclick="Book.removeBook(${i})">Remove</button>
+    </div>`;
+    }
   }
 }
 
-function getStoreFormData(key = 'Library-data') {
-  return JSON.parse(localStorage.getItem(key));
+// Create Necessary Functions
+
+const storedBooks = JSON.parse(localStorage.getItem('books'));
+
+if(storedBooks) {
+  books.push(...storedBooks);
+  Book.refreshBook();
 }
 
-function updateStoreFormData(formObj, key = 'Library-data') {
-  localStorage.setItem(
-    key,
-    JSON.stringify(formObj),
-  );
-}
+// Create Event Lisener
+const addBook = document.querySelector('.submit');
+addBook.addEventListener('click', () => {
+  const libro = new Book(bookName.value, bookAuthor.value);
+  books.push(libro);
+  Book.loadBooks(books.length - 1);
+  localStorage.setItem('books', JSON.stringify(books));
+});
 
-function initBookStorage() {
-  if (!storageAvailable('localStorage')) return;
-  library = Object.assign(library, getStoreFormData());
-}
-
-// BOOK ELEMENT
-
-const listOfBooksElement = document.querySelector('#books .list-books');
-
-function deleteBook(parentContainer, id) {
-  parentContainer.remove();
-  library.remove(id);
-  updateStoreFormData(library);
-}
-
-function CreateBookItemHTML(id, title, author) {
-  const divContainer = document.createElement('div');
-  const bokkTitle = document.createElement('p');
-  const bookAuthor = document.createElement('p');
-  const deleteBookBtn = document.createElement('button');
-  const hr = document.createElement('hr');
-
-  divContainer.id = `Book-${id}`;
-
-  bokkTitle.innerText = title;
-  bokkTitle.classList.add('book-title');
-  bookAuthor.innerText = author;
-  bokkTitle.classList.add('book-author');
-
-  deleteBookBtn.innerText = 'Remove';
-
-  deleteBookBtn.addEventListener('click', () => {
-    deleteBook(divContainer, id);
-  });
-
-  divContainer.appendChild(bokkTitle);
-  divContainer.appendChild(bookAuthor);
-  divContainer.appendChild(deleteBookBtn);
-  divContainer.appendChild(hr);
-
-  return divContainer;
-}
-
-function AddBookToContainerElement(book) {
-  listOfBooksElement.appendChild(CreateBookItemHTML(book.id, book.title, book.author));
-}
-
-function createBookListing() {
-  library.books.forEach((book) => {
-    AddBookToContainerElement(book);
-  });
-}
-
-// ADD book from
-
-const addBookForm = document.querySelector('#book-form');
-const bookTitleInput = addBookForm.querySelector('#title');
-const bookAuthorInput = addBookForm.querySelector('#author');
-
-function addBook(e) {
-  e.preventDefault();
-  AddBookToContainerElement(library.add(bookTitleInput.value, bookAuthorInput.value));
-  updateStoreFormData(library);
-  return false;
-}
-
-function addBookButtonLIstener() {
-  addBookForm.addEventListener('submit', addBook);
-}
-
-// INITS
-
-function init() {
-  initBookStorage();
-  if (library) createBookListing();
-  addBookButtonLIstener();
-}
-
-window.addEventListener('load', init);
