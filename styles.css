@@ -2,3 +2,78 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.page-title {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+}
+
+.library {
+  border: 2px solid black;
+}
+
+.each-book {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.each-book:nth-child(odd) {
+  background-color: lightgray;
+}
+
+.book-name {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.button {
+  box-shadow: 3px 3px gray;
+  width: 16%;
+  padding: 3px;
+}
+
+.add-books {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 1rem;
+  width: 200px;
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#form-inputs {
+  height: 1.5rem;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 12px;
+}
+
+.submit {
+  box-shadow: 3px 3px gray;
+  padding: 5px;
+}
