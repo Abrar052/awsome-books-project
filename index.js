@@ -1,60 +1,73 @@
-/* eslint-disable max-classes-per-file */
+import Library from './js/list.js';
 
-// Select Elements
-const library = document.querySelector('.library');
-const bookName = document.querySelector('.name');
-const bookAuthor = document.querySelector('.author');
+const library = new Library();
 
-// Create Empty Array
-const books = [];
+// BOOK ELEMENT
 
-class Book {
-  constructor(name, author) {
-    this.name = name;
-    this.author = author;
-  }
+const listOfBooksElement = document.querySelector('#books .list-books');
 
-  // Method to load added Books
-  static loadBooks(i) {
-    library.innerHTML += `<div class="each-book">
-    <div class="book-name">"${books[i].name}" by ${books[i].author}</div>
-    <button class="button" onclick="Book.removeBook(${i})">Remove</button>
-    </div>`;
-  }
-
-  // Method to Remove Books
-  static removeBook(i) {
-    books.splice(i, 1);
-    localStorage.setItem('books', JSON.stringify(books));
-    Book.refreshBook();
-  }
-
-  static refreshBook() {
-    library.innerHTML = '';
-    for (let i = 0; i < books.length; i += 1) {
-      library.innerHTML += `<div class="each-book">
-    <div class="book-name">"${books[i].name}" by ${books[i].author}</div>
-    
-    <button class="button" onclick="Book.removeBook(${i})">Remove</button>
-    </div>`;
-    }
-  }
+function deleteBook(parentContainer, id) {
+  parentContainer.remove();
+  library.remove(id);
 }
 
-// Create Necessary Functions
+function CreateBookItemHTML(id, title, author) {
+  const divContainer = document.createElement('div');
+  const bookTitleAndAuthor = document.createElement('p');
+  const deleteBookBtn = document.createElement('button');
 
-const storedBooks = JSON.parse(localStorage.getItem('books'));
+  divContainer.id = `Book-${id}`;
+  divContainer.classList.add('details');
 
-if (storedBooks) {
-  books.push(...storedBooks);
-  Book.refreshBook();
+  bookTitleAndAuthor.innerText = `"${title}" by ${author}`;
+  bookTitleAndAuthor.classList.add('title');
+  bookTitleAndAuthor.classList.add('author');
+
+  deleteBookBtn.innerText = 'Remove';
+  deleteBookBtn.classList.add('delete');
+
+  deleteBookBtn.addEventListener('click', () => {
+    deleteBook(divContainer, id);
+  });
+
+  divContainer.appendChild(bookTitleAndAuthor);
+  divContainer.appendChild(deleteBookBtn);
+
+  return divContainer;
 }
 
-// Create Event Lisener
-const addBook = document.querySelector('.submit');
-addBook.addEventListener('click', () => {
-  const libro = new Book(bookName.value, bookAuthor.value);
-  books.push(libro);
-  Book.loadBooks(books.length - 1);
-  localStorage.setItem('books', JSON.stringify(books));
-});
+function AddBookToContainer(book) {
+  listOfBooksElement.appendChild(CreateBookItemHTML(book.id, book.title, book.author));
+}
+
+function createBookListing() {
+  library.books.forEach((book) => {
+    AddBookToContainer(book);
+  });
+}
+
+// ADD book from
+
+const addBookForm = document.querySelector('#book-form');
+const bookTitleInput = addBookForm.querySelector('#title');
+const bookAuthorInput = addBookForm.querySelector('#author');
+
+function addBook(e) {
+  e.preventDefault();
+  AddBookToContainer(library.createBookAndAdd(bookTitleInput.value, bookAuthorInput.value));
+  return false;
+}
+
+function addBookButtonLIstener() {
+  addBookForm.addEventListener('submit', addBook);
+}
+
+// INITS
+
+function init() {
+  library.initBookStorage();
+  createBookListing();
+  addBookButtonLIstener();
+}
+
+window.addEventListener('load', init);
