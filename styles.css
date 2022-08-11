@@ -63,7 +63,8 @@ body {
   gap: 1rem;
 }
 
-#form-inputs {
+.name,
+.author {
   height: 1.5rem;
 }
 
