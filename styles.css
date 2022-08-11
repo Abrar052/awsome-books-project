@@ -8,73 +8,71 @@ body {
   justify-content: center;
 }
 
+.section-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#books {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
 .page-title {
   text-align: center;
   padding: 1rem 0 1rem 0;
 }
 
-.library {
+.details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.list-books {
+  display: flex;
+  flex-direction: column;
   border: 2px solid black;
 }
 
-.each-book {
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.each-book:nth-child(odd) {
+.details:nth-child(odd) {
   background-color: lightgray;
 }
 
-.book-name {
-  display: flex;
-  flex-direction: column;
-  font-weight: 500;
-}
-
-.button {
+.delete {
+  padding: 5px;
   box-shadow: 3px 3px gray;
-  width: 16%;
-  padding: 3px;
 }
 
-.add-books {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-#form {
+#book-form {
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
-  gap: 1rem;
-  width: 200px;
+  gap: 10px;
 }
 
-.form-div {
+.form-inputs {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  gap: 10px;
 }
 
-.name,
-.author {
+#title,
+#author {
   height: 1.5rem;
+  padding: 5px;
 }
 
-.form-btn {
+.btn-div {
   display: flex;
   justify-content: flex-end;
-  padding-right: 12px;
 }
 
-.submit {
+#book-btn {
   box-shadow: 3px 3px gray;
-  padding: 5px;
+  padding: 3px;
 }
