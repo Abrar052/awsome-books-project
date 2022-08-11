@@ -10,6 +10,7 @@
 </head>
 
 <body>
+	<div id="wrapper">
 		<section id="book-list">
 			<h2 class="page-title">All Awesome Books</h2>
 			<div class="library">
@@ -18,11 +19,19 @@
 		<section class="add-books">
 			<h2 class="page-title">Add a New Book</h2>
 			<form id="form">
-				<input class="name" type="text" aria-placeholder="Enter Book Name">
-				<input class="author" type="text" aria-placeholder="Enter Book Author">
-				<button class="submit" type="submit">Add Book</button>
+				<div class="form-div">
+					<input id="form-inputs" class="name" type="text" placeholder="Enter Book Name" maxlength="30" required>
+					<input id="form-inputs" class="author" type="text" placeholder="Enter Book Author" maxlength="30" required>
+				</div>
+				<div class="form-btn">
+					<button class="submit" type="submit">Add Book</button>
+				</div>
+				
+				
 			</form> 
 		</section>
+	</div>
+		
   <footer>
 	</footer>
 
