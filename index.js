@@ -4,39 +4,37 @@
 const library = document.querySelector('.library');
 const bookName = document.querySelector('.name');
 const bookAuthor = document.querySelector('.author');
-document.body.style.backgroundColor = 'red';
 
 // Create Empty Array
-const books= [];
+const books = [];
 
 class Book {
   constructor(name, author) {
     this.name = name;
     this.author = author;
   }
-  
+
   // Method to load added Books
   static loadBooks(i) {
     library.innerHTML += `<div class="each-book">
-    <div class="book-name">${books[i].name}</div>
-    <div class="book-author">${books[i].author}</div>
+    <div class="book-name">"${books[i].name}" by ${books[i].author}</div>
     <button class="button" onclick="Book.removeBook(${i})">Remove</button>
     </div>`;
   }
-  
-    // Method to Remove Books
-    static removeBook(i) {
-      books.splice(i, 1);
-      localStorage.setItem('books', JSON.stringify(books));
-      Book.refreshBook();
-    }
-  
+
+  // Method to Remove Books
+  static removeBook(i) {
+    books.splice(i, 1);
+    localStorage.setItem('books', JSON.stringify(books));
+    Book.refreshBook();
+  }
+
   static refreshBook() {
     library.innerHTML = '';
-    for (let i = 0;i < books.length;i++) {
+    for (let i = 0; i < books.length; i += 1) {
       library.innerHTML += `<div class="each-book">
-    <div class="book-name">${books[i].name}</div>
-    <div class="book-author">${books[i].author}</div>
+    <div class="book-name">"${books[i].name}" by ${books[i].author}</div>
+    
     <button class="button" onclick="Book.removeBook(${i})">Remove</button>
     </div>`;
     }
@@ -47,7 +45,7 @@ class Book {
 
 const storedBooks = JSON.parse(localStorage.getItem('books'));
 
-if(storedBooks) {
+if (storedBooks) {
   books.push(...storedBooks);
   Book.refreshBook();
 }
@@ -60,4 +58,3 @@ addBook.addEventListener('click', () => {
   Book.loadBooks(books.length - 1);
   localStorage.setItem('books', JSON.stringify(books));
 });
-
