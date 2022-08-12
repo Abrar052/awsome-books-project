@@ -16,6 +16,64 @@ body {
   align-items: center;
 }
 
+#header {
+  display: block;
+  width: 60%;
+  margin-top: 10px;
+}
+
+.nav-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border: 2px solid black;
+}
+
+.nav-bar a.active {
+  color: blue;
+  font-weight: bold;
+}
+
+.items a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar a:hover {
+  color: blue;
+}
+
+.logo {
+  float: left;
+  font-size: 25px;
+  padding-left: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+#nav-items {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 1rem;
+  font-size: 20px;
+}
+
+.items {
+  border-right: 2px solid black;
+  padding-right: 10px;
+}
+
+.items:nth-child(3) {
+  border-right: none;
+}
+
+#date-time {
+  float: right;
+}
+
 #books {
   width: 60%;
   display: flex;
@@ -29,6 +87,7 @@ body {
 
 .details {
   width: 100%;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
@@ -47,6 +106,10 @@ body {
 .delete {
   padding: 5px;
   box-shadow: 3px 3px gray;
+}
+
+#add-book {
+  display: none;
 }
 
 #book-form {
@@ -75,4 +138,33 @@ body {
 #book-btn {
   box-shadow: 3px 3px gray;
   padding: 3px;
+}
+
+#contact-us {
+  display: none;
+}
+
+.contact-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-info {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+  width: 60%;
+  border: 2px solid black;
+}
+
+#copy {
+  font-size: large;
+  padding: 10px 0 10px 10px;
+  font-weight: bold;
 }
