@@ -2,49 +2,60 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
 	<title>Awesome Books Website</title>
 </head>
 <body>
-	<section id="container">
+	<div class="section-div">
 		<header id="header">
-			<nav id="nav-bar">
-				<h4 class="logo">Awesome Books</h4>
+			<nav class="nav-bar">
+				<h4 class="logo"><a class="logo" href="index.html">Awesome Books</a></h4>
 				<ul id="nav-items">
-					<li class="items">List</li>
-					<li class="items">Add</li>	
-					<li class="items">Contact Us</li>
+					<li class="items" ><a class="active" href="#books" id="list-menu">List</a></li>
+					<li class="items" ><a class="" href="#add-book" id="add-menu">Add New</a></li>	
+					<li class="items" ><a class="" href="#contact-us" id="contact-menu">Contact</a></li>
 				</ul>
-                </nav>
-				<p class="date"></p>
+			</nav>
+			<p id="date-time"></p>
 		</header>
-		<section id="book-list">
-			<h2 class="page-title">All Awesome Books</h2>
-			<div class="library">
-			  
+		<section id="books">
+			<h1 class="page-title">AWESOME BOOKS</h1>
+			<div class="list-books">
 			</div>
 		</section>
-		<section class="add-books">
-			<h2 class="page-title">Add a New Book</h2>
-			<form id="form">
-				<input class="name" type="text" aria-placeholder="Enter Book Name">
-				<input class="author" type="text" aria-placeholder="Enter Book Author">
-				<button class="submit" type="submit">Add Book</button>
-			</form> 
+		<section id="add-book" class="add-books">
+			<h1 class="page-title">Add a New Book</h1>
+			<form id="book-form">
+				<div class="form-inputs">
+					<input id="title" type="text" name="title" placeholder="Title" maxlength="30" required />
+					<input id="author" type="text" name="author" placeholder="Author" maxlength="30" required />
+	
+				</div>
+				<div class="btn-div">
+					<button id="book-btn" type="submit">Add book</button>
+				</div>
+					
+			</form>
 		</section>
 		<section id="contact-us">
-			<h2 class="page-title">Contact Us</h2>
-			<p id="message">Do you have any questions or you just want to say "Hello"?, You can Reach out to Us!</p>
-			<ul class="contact-info">
-				<li class="info">Our Email: mail@mail.com</li>
-				<li class="info">Our Phone no.: 12345678901</li>
-				<li class="info">Our Address: Go to the Moon</li>
-			</ul>
+			<div class="contact-div">
+				<h2 class="page-title">Contact Information</h2>
+				<p id="message">Do you have any questions or you just want to say "Hello"?, You can Reach out to Us!</p>
+				<ul class="contact-info">
+					<li class="info">Our Email: bc160400820@vu.edu.pk</li>
+					<li class="info">Our Phone no.: +923044145767 & +2349032083144</li>
+					<li class="info">Our Address: Abrar & Solomon Software Developers Pakistan</li>
+				</ul>
+			</div>
+			
 		</section>
 		<footer id="footer">
 			<p id="copy">&copy; Abrar and Solomon. All Rights Reserved</p>
 		</footer>
-	</section>
-	<script src="app.js"></script>
+	
+	</div>
+	<script type="module" src="index.js"></script>
 </body>
 </html>
