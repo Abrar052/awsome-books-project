@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles.css">
-	<title>Document</title>
+	<title>Awesome Books Website</title>
 </head>
-
 <body>
-	<header></header>
 	<div class="section-div">
+		<header id="header">
+			<nav class="nav-bar">
+				<h4 class="logo"><a class="logo" href="index.html">Awesome Books</a></h4>
+				<ul id="nav-items">
+					<li class="items" ><a class="active" href="#books" id="list-menu">List</a></li>
+					<li class="items" ><a class="" href="#add-book" id="add-menu">Add New</a></li>	
+					<li class="items" ><a class="" href="#contact-us" id="contact-menu">Contact</a></li>
+				</ul>
+			</nav>
+			<p id="date-time"></p>
+		</header>
 		<section id="books">
 			<h1 class="page-title">AWESOME BOOKS</h1>
 			<div class="list-books">
 			</div>
 		</section>
-	
-		<section id="add-book">
-			<h2 class="page-title">Add book Form</h2>
+		<section id="add-book" class="add-books">
+			<h1 class="page-title">Add a New Book</h1>
 			<form id="book-form">
 				<div class="form-inputs">
 					<input id="title" type="text" name="title" placeholder="Title" maxlength="30" required />
@@ -32,10 +39,23 @@
 					
 			</form>
 		</section>
+		<section id="contact-us">
+			<div class="contact-div">
+				<h2 class="page-title">Contact Information</h2>
+				<p id="message">Do you have any questions or you just want to say "Hello"?, You can Reach out to Us!</p>
+				<ul class="contact-info">
+					<li class="info">Our Email: bc160400820@vu.edu.pk</li>
+					<li class="info">Our Phone no.: +923044145767 & +2349032083144</li>
+					<li class="info">Our Address: Abrar & Solomon Software Developers Pakistan</li>
+				</ul>
+			</div>
+			
+		</section>
+		<footer id="footer">
+			<p id="copy">&copy; Abrar and Solomon. All Rights Reserved</p>
+		</footer>
 	
 	</div>
-	
 	<script type="module" src="index.js"></script>
 </body>
-
 </html>

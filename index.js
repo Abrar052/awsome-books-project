@@ -62,12 +62,80 @@ function addBookButtonLIstener() {
   addBookForm.addEventListener('submit', addBook);
 }
 
+function refreshTime() {
+  const timeDisplay = document.getElementById('date-time');
+  const dateOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
+  const dateString = new Date().toLocaleString('en-us', dateOptions);
+  timeDisplay.textContent = dateString;
+}
+
+function initTime() {
+  refreshTime();
+  setInterval(refreshTime, 1000);
+}
+
+const sectionList = document.getElementById('books');
+const addBookSection = document.getElementById('add-book');
+const contactSection = document.getElementById('contact-us');
+
+const listMenu = document.getElementById('list-menu');
+const addMenu = document.getElementById('add-menu');
+const contactMenu = document.getElementById('contact-menu');
+
+function removeActiveLink() {
+  listMenu.classList.remove('active');
+  addMenu.classList.remove('active');
+  contactMenu.classList.remove('active');
+}
+
+function clickOnList(e) {
+  e.preventDefault();
+  removeActiveLink();
+  e.target.classList.add('active');
+  sectionList.style.display = 'block';
+  addBookSection.style.display = 'none';
+  contactSection.style.display = 'none';
+}
+
+function clickOnAdd(e) {
+  e.preventDefault();
+  removeActiveLink();
+  e.target.classList.add('active');
+  sectionList.style.display = 'none';
+  addBookSection.style.display = 'block';
+  contactSection.style.display = 'none';
+}
+
+function clickOnContact(e) {
+  e.preventDefault();
+  removeActiveLink();
+  e.target.classList.add('active');
+  sectionList.style.display = 'none';
+  addBookSection.style.display = 'none';
+  contactSection.style.display = 'block';
+}
+
+function addNavListeners() {
+  listMenu.addEventListener('click', clickOnList);
+  addMenu.addEventListener('click', clickOnAdd);
+  contactMenu.addEventListener('click', clickOnContact);
+}
+
 // INITS
 
 function init() {
   library.initBookStorage();
   createBookListing();
   addBookButtonLIstener();
+  addNavListeners();
+  initTime();
 }
 
 window.addEventListener('load', init);
