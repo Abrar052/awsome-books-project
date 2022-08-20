@@ -1,5 +1,5 @@
 # Awsome Books Project
->This is a Microverse Awsome Books Project and it is created on SPA (Single PAge Application) approach.
+>This is an Awsome Books Project and it is created on SPA (Single PAge Application) approach.
 
 ## Built With
 
